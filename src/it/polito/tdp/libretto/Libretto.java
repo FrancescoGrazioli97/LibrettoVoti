@@ -38,12 +38,39 @@ public class Libretto {
 	}
 	
 	public Voto cercaEsame (String nomeEsame) {
-		for(Voto v: this.voti) {
-			if(v.getCorso().equals(nomeEsame)) {
-				return v;
-			}
+		Voto voto = new Voto(0,nomeEsame,null);
+		int pos=this.voti.indexOf(voto);
+		if(pos==-1)
+			return null;
+		else
+			return this.voti.get(pos);
+	}
+	
+	/**
+	 * dato un voto determina se esiste già un voto con uguale corso
+	 * ed uguale punteggio
+	 * @param v
+	 * @return
+	 */
+	
+	public boolean esisteGiaVoto(Voto v) {
+		int pos=this.voti.indexOf(v);
+		if(pos==-1)
+			return false;
+		else
+			return (v.getPunti()==this.voti.get(pos).getPunti());
+		
+		/**
+		Voto trovato=this.cercaEsame(v.getCorso());
+		if(trovato==null)
+			return false;
+		if(trovato.getPunti()==v.getPunti()) {
+			return true;
 		}
-		return null;
+		else {
+			return false;
+		}
+		*/
 	}
 	
 	
